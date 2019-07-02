@@ -1,6 +1,8 @@
 package JavaMentor.parentTest;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,10 +11,13 @@ import pages.MainUrl;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.CoreMatchers.is;
+
 public class ParentTest {
     public MainUrl mainUrl;
     public WebDriver webDriver;
-
+    Logger logger = Logger.getLogger(getClass());
+    private boolean isTestPass = false;
 
     public ParentTest() {
     }
@@ -32,11 +37,20 @@ public class ParentTest {
 
     }
 
-    @After
+        @After
     public void tearDown() {
         if (!(webDriver == null)) {
             webDriver.quit();
         }
     }
+    public void checkAC(String messageICantSee, boolean actualResult, boolean expectedResult) {
+        logger.info("2.3 - " + messageICantSee + " in Parent Test");
+        if (!(actualResult == expectedResult))
+            Assert.assertThat(messageICantSee, actualResult, is(expectedResult));
+        setTestPass();
+    }
 
+    private void setTestPass() {
+        isTestPass = true;
+    }
 }
