@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.io.File;
 import java.util.List;
@@ -27,8 +27,8 @@ public class ListOfElements {
         File driverPathEdge = new File("../JavaMentor/drivers/MicrosoftWebDriver.exe");
         System.setProperty("webdriver.edge.driver", driverPathEdge.getAbsolutePath());
 
-        webDriver = new ChromeDriver();
-        //webDriver = new EdgeDriver();
+        //webDriver = new ChromeDriver();
+        webDriver = new EdgeDriver();
 
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
