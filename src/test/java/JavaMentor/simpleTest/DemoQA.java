@@ -13,12 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class demoQA {
+public class DemoQA {
     private WebDriver webDriver;
     private Logger logger = Logger.getLogger(getClass());
     private WebDriverWait webDriverWait15;
@@ -99,11 +100,11 @@ public class demoQA {
     private void checkSortedElements() {
         List<WebElement> allItems = webDriver.findElements(By.xpath(".//li[@class='ui-state-default ui-sortable-handle']"));
 
-        StringBuilder actualResult = new StringBuilder();
+        List<String> actualResult = new ArrayList<>();
         for (WebElement w : allItems) {
             String item = w.getText();
             logger.info(item);
-            actualResult.append(item + ", ");
+            actualResult.add(item);
         }
         List<String> expectedResult = Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7");
 
