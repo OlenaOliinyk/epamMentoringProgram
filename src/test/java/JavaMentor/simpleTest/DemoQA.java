@@ -75,7 +75,7 @@ public class DemoQA {
         changeRectangleSize(resizeableElementToBigger, 350, 350);
         printCurrentSize();
         WebElement resizeableElementToSmaller = webDriver.findElement(By.xpath(".//div[@class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se']"));
-        changeRectangleSize(resizeableElementToSmaller, 100, 100);
+        changeRectangleSize(resizeableElementToSmaller, -100, -100);
         printCurrentSize();
 
     }
@@ -124,9 +124,14 @@ public class DemoQA {
     private void selectRandomly() {
         List<WebElement> elementsToBeSElectable = webDriver.findElements(By.xpath(".//li[@class='ui-widget-content ui-selectee']"));
 
+        Actions shiftClick = new Actions(webDriver);
         Random rand = new Random();
-        int randomProduct1 = rand.nextInt(elementsToBeSElectable.size());
-        elementsToBeSElectable.get(randomProduct1).click();
+
+       int randomProduct1 = rand.nextInt(elementsToBeSElectable.size());
+
+        shiftClick.keyDown(Keys.LEFT_CONTROL).click(elementsToBeSElectable).get(randomProduct1).keyUp(Keys.LEFT_CONTROL).perform();
+
+       // elementsToBeSElectable.get(randomProduct1).click();
         logger.info("1 random element is selected");
         webDriverWait15 = new WebDriverWait(webDriver, 15);
 
@@ -154,16 +159,11 @@ public class DemoQA {
 
         Actions action = new Actions(webDriver);
         action.clickAndHold(toElement).moveByOffset(xOffset, yOffset).release().build().perform();
-        logger.info("size is changed : " +xOffset + "  " + yOffset);
+        logger.info("size is changed : " + xOffset + "  " + yOffset);
 
     }
 
-//    public void change(){
-//
-//        WebElement  target = new WebDriverWait(webDriver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se']")));
-//        new Actions(webDriver).dragAndDropBy(target, 50, 50).build().perform();
-//        System.out.println("Resizing of element Completed");
-//    }
+
 }
 
 
