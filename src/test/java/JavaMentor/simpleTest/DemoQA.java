@@ -48,7 +48,6 @@ public class DemoQA {
         } catch (IOException e) {
             logger.info(e);
         }
-
         webDriver.quit();
 
     }
@@ -124,14 +123,13 @@ public class DemoQA {
     private void selectRandomly() {
         List<WebElement> elementsToBeSElectable = webDriver.findElements(By.xpath(".//li[@class='ui-widget-content ui-selectee']"));
 
-        Actions shiftClick = new Actions(webDriver);
+        Actions cntrClick = new Actions(webDriver);
         Random rand = new Random();
 
        int randomProduct1 = rand.nextInt(elementsToBeSElectable.size());
+       //cntrClick.keyDown(Keys.LEFT_CONTROL).click(elementsToBeSElectable).get(randomProduct1).keyUp(Keys.LEFT_CONTROL).perform();
+        elementsToBeSElectable.get(randomProduct1).click();
 
-        shiftClick.keyDown(Keys.LEFT_CONTROL).click(elementsToBeSElectable).get(randomProduct1).keyUp(Keys.LEFT_CONTROL).perform();
-
-       // elementsToBeSElectable.get(randomProduct1).click();
         logger.info("1 random element is selected");
         webDriverWait15 = new WebDriverWait(webDriver, 15);
 
