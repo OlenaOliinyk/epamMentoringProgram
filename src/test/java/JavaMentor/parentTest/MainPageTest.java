@@ -10,8 +10,8 @@ public class MainPageTest extends ParentTest {
     @Test
     public void firstTest() {
         mainUrl.openLoginPage();
-        mainUrl.enterLoginToInput("eleniksummer@gmail.com");
-        mainUrl.enterPasswordToInput("w1526v");
+        mainUrl.enterLoginToInput("eleniks@gmail.com");
+        mainUrl.enterPasswordToInput("---");
         mainUrl.clickOnSubmitButton();
 
         checkAC("check logo", mainUrl.checkLogo(),true);
