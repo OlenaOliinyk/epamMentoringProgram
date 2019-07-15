@@ -11,4 +11,12 @@ public class DemoMainTest extends DemoMainPage {
         hoverClick();
 
     }
+
+    @Test
+    public void workWithTooltip(){
+        openTooltip();
+        verifyTextInHover();
+
+
+    }
 }

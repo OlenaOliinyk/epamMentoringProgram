@@ -1,5 +1,5 @@
 package JavaMentor.simpleTest.demoPartTwo;
-//page 142
+//page 142, 143
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
@@ -46,10 +46,16 @@ public class DemoMainPage {
         logger.info("1 - Url opened");
     }
 
+    public void openTooltip() {
+
+        webDriver.get("https://demoqa.com/tooltip/");
+        logger.info("1 - Url opened");
+    }
+
     public void rightClick() {
 
         WebElement element = webDriver.findElement(By.id("doubleClickBtn"));
-        Actions action= new Actions(webDriver);
+        Actions action = new Actions(webDriver);
         action.doubleClick(element).perform();
         logger.info("right click");
     }
@@ -57,15 +63,29 @@ public class DemoMainPage {
     public void dubleClick() {
 
         WebElement element = webDriver.findElement(By.id("rightClickBtn"));
-        Actions action= new Actions(webDriver);
+        Actions action = new Actions(webDriver);
         action.contextClick(element).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
         logger.info("double click");
     }
+
     public void hoverClick() {
 
         WebElement element = webDriver.findElement(By.id("tooltipDemo"));
-        Actions action= new Actions(webDriver);
+        Actions action = new Actions(webDriver);
         action.moveToElement(element).build().perform();
         logger.info("Hover navigate");
+    }
+
+    public void verifyTextInHover() {
+
+        WebElement element = webDriver.findElement(By.xpath(".//input[contains(@title,'statistical purposes')]"));
+        try {
+            element.isEnabled();
+            logger.info("statistical purposes - is enabled");
+        } catch (Exception e) {
+            logger.info("element is not Enabled");
+        }
+
+
     }
 }
