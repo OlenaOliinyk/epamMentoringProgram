@@ -29,4 +29,13 @@ public class DemoMainTest extends DemoMainPage {
         getCurrentPosition();
 
     }
+    @Test
+    public void randomDay(){
+
+        openDatepicker();
+        clickDDField();
+        selectFromDropDown();
+        checkDateIsSelected();
+    }
+
 }
