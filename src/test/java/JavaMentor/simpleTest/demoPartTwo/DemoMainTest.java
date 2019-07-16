@@ -19,4 +19,14 @@ public class DemoMainTest extends DemoMainPage {
 
 
     }
+
+    @Test
+    public void workWithSlider() {
+        openSlider();
+        moveSliderToHalf();
+        getCurrentPosition();
+        moveRandomly();
+        getCurrentPosition();
+
+    }
 }

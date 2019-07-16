@@ -1,5 +1,5 @@
 package JavaMentor.simpleTest.demoPartTwo;
-//page 142, 143
+//page 142, 143, 144
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
@@ -52,6 +52,12 @@ public class DemoMainPage {
         logger.info("1 - Url opened");
     }
 
+    public void openSlider() {
+
+        webDriver.get("https://demoqa.com/slider/");
+        logger.info("1 - Url opened");
+    }
+
     public void rightClick() {
 
         WebElement element = webDriver.findElement(By.id("doubleClickBtn"));
@@ -85,7 +91,42 @@ public class DemoMainPage {
         } catch (Exception e) {
             logger.info("element is not Enabled");
         }
+    }
 
+
+    public void moveSliderToHalf() {
+        WebElement slider = webDriver.findElement(By.id("slider"));
+        int width = slider.getSize().getWidth();
+        WebElement element = webDriver.findElement(By.xpath(".//span[@class='ui-slider-handle ui-corner-all ui-state-default']"));
+        logger.info(width + " length of slider");
+        Actions move = new Actions(webDriver);
+        int x = 80;
+        //move.dragAndDropBy(element, ((width * x) / 100), 0).click();
+        move.dragAndDropBy(element, (width / 2) , 0).click();
+       // move.dragAndDropBy(element, 25, 0).click();
+        move.build().perform();
 
     }
+
+    public void getCurrentPosition() {
+        WebElement element = webDriver.findElement(By.xpath(".//span[@class='ui-slider-handle ui-corner-all ui-state-default']"));
+
+        logger.info(element.getCssValue("left") + " value");
+        logger.info(element.getAttribute("style") + " attribute");
+        logger.info("----------");
+    }
+
+    public void moveRandomly() {
+        WebElement element = webDriver.findElement(By.xpath(".//span[@class='ui-slider-handle ui-corner-all ui-state-default']"));
+        Actions move = new Actions(webDriver);
+
+        int index = (int)(Math.random()*500);
+       logger.info(index+" random value");
+        move.dragAndDropBy(element,index, 0).click();
+
+        move.build().perform();
+        logger.info("moved randomly");
+    }
+
+
 }
