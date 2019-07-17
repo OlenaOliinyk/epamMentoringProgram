@@ -1,5 +1,5 @@
 package JavaMentor.simpleTest.demoPartTwo;
-//pages 142, 143, 144, 145
+//pages 142, 143, 144, 145, 146
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
@@ -56,6 +56,12 @@ public class DemoMainPage {
     public void openDatepicker() {
 
         webDriver.get("https://demoqa.com/datepicker/");
+        logger.info("1 - Url opened");
+    }
+
+    public void openCheckBoxRadio() {
+
+        webDriver.get("https://demoqa.com/checkboxradio/");
         logger.info("1 - Url opened");
     }
 
@@ -161,6 +167,24 @@ public class DemoMainPage {
         } catch (Exception e) {
             logger.info("element is not Enabled");
         }
+    }
+
+    public void clickRadioButton() {
+        WebElement element = webDriver.findElement(By.xpath("(.//label[@class='ui-checkboxradio-label ui-corner-all ui-button ui-widget ui-checkboxradio-radio-label']/span[@class='ui-checkboxradio-icon ui-corner-all ui-icon ui-icon-background ui-icon-blank'])[1]"));
+        element.click();
+        logger.info("radio button 1 is clicked");
+        WebElement element1 = webDriver.findElement(By.xpath("(.//label[@class='ui-checkboxradio-label ui-corner-all ui-button ui-widget ui-checkboxradio-radio-label']/span[@class='ui-checkboxradio-icon ui-corner-all ui-icon ui-icon-background ui-icon-blank'])[2]"));
+        element1.click();
+        logger.info("radio button 2 is clicked");
+    }
+
+    public void clickCheckBox() {
+        WebElement element = webDriver.findElement(By.xpath("(.//label[@class='ui-checkboxradio-label ui-corner-all ui-button ui-widget']/span[@class='ui-checkboxradio-icon ui-corner-all ui-icon ui-icon-background ui-icon-blank'])[1]"));
+        element.click();
+        logger.info("check box 1 is clicked");
+        WebElement element1 = webDriver.findElement(By.xpath("(.//label[@class='ui-checkboxradio-label ui-corner-all ui-button ui-widget']/span[@class='ui-checkboxradio-icon ui-corner-all ui-icon ui-icon-background ui-icon-blank'])[2]"));
+        element1.click();
+        logger.info("check box 2 is clicked");
     }
 }
 

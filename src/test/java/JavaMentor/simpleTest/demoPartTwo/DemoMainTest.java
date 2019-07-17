@@ -38,4 +38,10 @@ public class DemoMainTest extends DemoMainPage {
         checkDateIsSelected();
     }
 
+    @Test
+    public void radioButton(){
+        openCheckBoxRadio();
+        clickRadioButton();
+        clickCheckBox();
+    }
 }
