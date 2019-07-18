@@ -17,4 +17,5 @@ public class MainPageTest extends ParentTest {
         checkAC("check logo", mainUrl.checkLogo(),true);
 
     }
+
 }

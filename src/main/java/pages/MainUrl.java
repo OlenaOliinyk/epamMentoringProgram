@@ -14,6 +14,9 @@ public class MainUrl extends ParentPage {
     @FindBy(xpath = ".//div[@id='logoutMenu']")
     private WebElement logo;
 
+    @FindBy(xpath = ".//a[@href]")
+    private WebElement linkLocator;
+
     public MainUrl(WebDriver webDriver) {
         super(webDriver);
     }
@@ -22,8 +25,23 @@ public class MainUrl extends ParentPage {
 
         open("https://www.facebook.com/"
         );
-        logger.info("1.2 -Url opened in MainUrl ");
+        logger.info("1.1 -Url opened in MainUrl ");
     }
+
+    public void openWikipedia() {
+
+        open("https://en.wikipedia.org/wiki/Main_Page");
+        logger.info(" Url opened in MainUrl ");
+    }
+
+
+    public void collectAllLinks() {
+        actionsWithOurElements.getTextWithLink(linkLocator);
+
+        logger.info("2.2 collectAllLinks");
+
+    }
+
 
     public void enterLoginToInput(String login) {
         actionsWithOurElements.enterText(enterLogin, login);
@@ -36,7 +54,7 @@ public class MainUrl extends ParentPage {
     }
 
     public void clickOnSubmitButton() {
-        //alt+enter- sozdat metod field
+
         actionsWithOurElements.clickButton(logButton);
     }
 

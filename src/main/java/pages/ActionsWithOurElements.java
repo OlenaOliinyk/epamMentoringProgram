@@ -30,7 +30,7 @@ public class ActionsWithOurElements {
     }
 
     public void enterText(WebElement element, String text) {
-        try {
+            try {
             element.clear();
 
             element.sendKeys(text);
@@ -44,14 +44,33 @@ public class ActionsWithOurElements {
 
 
     }
+
     public boolean isElementPresentMetod(WebElement element) {
         logger.info("2.2 try catch in ActionWithElements");
         try {
             return element.isDisplayed();
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
 
     }
 
+
+    public String getTextWithLink(WebElement element) {
+
+        try {
+            String inerText = element.getText();
+            logger.info("2.1 getText() : "+inerText);
+
+           // return element.getText();
+            return inerText;
+        } catch (Exception e) {
+            logger.error("Can not work with element" + element);
+            Assert.fail("Can not work with element" + element);
+            return "";
+        }
+
+    }
+
 }
+
