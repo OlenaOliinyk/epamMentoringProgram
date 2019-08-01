@@ -5,7 +5,7 @@ import org.junit.Test;
 public class DemoMainTest extends DemoMainPage {
     @Test
     public void doubleclickTest() {
-        openDemo();
+        openDirectLink("https://demoqa.com/tooltip-and-double-click/");
         dubleClick();
         rightClick();
         hoverClick();
@@ -14,7 +14,7 @@ public class DemoMainTest extends DemoMainPage {
 
     @Test
     public void workWithTooltip(){
-        openTooltip();
+        openDirectLink("https://demoqa.com/tooltip/");
         verifyTextInHover();
 
 
@@ -22,7 +22,7 @@ public class DemoMainTest extends DemoMainPage {
 
     @Test
     public void workWithSlider() {
-        openSlider();
+        openDirectLink("https://demoqa.com/slider/");
         moveSliderToHalf();
         getCurrentPosition();
         moveRandomly();
@@ -32,7 +32,7 @@ public class DemoMainTest extends DemoMainPage {
     @Test
     public void randomDay(){
 
-        openDatepicker();
+        openDirectLink("https://demoqa.com/datepicker/");
         clickDDField();
         selectFromDropDown();
         checkDateIsSelected();
@@ -40,7 +40,7 @@ public class DemoMainTest extends DemoMainPage {
 
     @Test
     public void radioButton(){
-        openCheckBoxRadio();
+        openDirectLink("https://demoqa.com/checkboxradio/");
         clickRadioButton();
         clickCheckBox();
     }

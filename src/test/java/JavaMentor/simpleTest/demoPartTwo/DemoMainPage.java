@@ -4,6 +4,7 @@ package JavaMentor.simpleTest.demoPartTwo;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -41,34 +42,10 @@ public class DemoMainPage {
 
     }
 
-    public void openDemo() {
+    public void openDirectLink(final String link) {
 
-        webDriver.get("https://demoqa.com/tooltip-and-double-click/");
-        logger.info("1 - Url opened");
-    }
-
-    public void openTooltip() {
-
-        webDriver.get("https://demoqa.com/tooltip/");
-        logger.info("1 - Url opened");
-    }
-
-    public void openDatepicker() {
-
-        webDriver.get("https://demoqa.com/datepicker/");
-        logger.info("1 - Url opened");
-    }
-
-    public void openCheckBoxRadio() {
-
-        webDriver.get("https://demoqa.com/checkboxradio/");
-        logger.info("1 - Url opened");
-    }
-
-    public void openSlider() {
-
-        webDriver.get("https://demoqa.com/slider/");
-        logger.info("1 - Url opened");
+        webDriver.get(link);
+        logger.info("1 - Url " + link + " is opened");
     }
 
     public void rightClick() {
@@ -97,13 +74,14 @@ public class DemoMainPage {
 
     public void verifyTextInHover() {
 
-        WebElement element = webDriver.findElement(By.xpath(".//input[contains(@title,'statistical purposes')]"));
-        try {
-            element.isEnabled();
-            logger.info("statistical purposes - is enabled");
-        } catch (Exception e) {
-            logger.info("element is not Enabled");
-        }
+        WebElement element = webDriver.findElement(By.xpath(".//input[contains(@id,'age')]"));
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(element).build().perform();
+        WebElement tooltip = webDriver.findElement(By.xpath(".//div[contains(@class,'ui-tooltip-content')]"));
+        String tooltipText = tooltip.getText();
+        logger.info("Tooltip text: " + tooltipText);
+
+        Assert.assertTrue(tooltipText.contains("statistical purposes"));
     }
 
 
@@ -122,7 +100,7 @@ public class DemoMainPage {
     }
 
     public void getCurrentPosition() {
-        WebElement element = webDriver.findElement(By.xpath(".//span[@class='ui-slider-handle ui-corner-all ui-state-default']"));
+        WebElement element = webDriver.findElement(By.xpath(".//span[contains(@class,'ui-slider-handle')]"));
 
         logger.info(element.getCssValue("left") + " value");
         logger.info(element.getAttribute("style") + " attribute");
@@ -154,12 +132,10 @@ public class DemoMainPage {
         logger.info(index + " random value");
         dropDownMonth.get(index).click();
 
-
     }
 
     public void checkDateIsSelected() {
-
-
+        
         WebElement element = webDriver.findElement(By.id("datepicker"));
         try {
             element.isSelected();
