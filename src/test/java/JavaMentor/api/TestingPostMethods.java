@@ -9,7 +9,7 @@ public class TestingPostMethods {
 
 
     @Test
-    public void kha() {
+    public void placeOrder() {
 
         RestAssured.baseURI = "https://petstore.swagger.io/v2/store";
 
